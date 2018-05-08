@@ -78,14 +78,13 @@ public class Prompt {
 		System.out.println("[일정 검색]");
 		System.out.println("날짜를 입력해주세요(yyyy-MM-dd).");
 		String date = s.next();
-		String plan = "";
-		try {
+		PlanItem plan;
 			plan = c.searchPlan(date);
-		} catch (ParseException e) {
-			e.printStackTrace();
-			System.err.println("일정 검색 중 오류가 발생했습니다.");
-		}
-		System.out.println(plan);
+			if  (plan != null){
+			System.out.println(plan.detail);
+			} else {
+				System.out.println("일정이 없습니다.");
+			}
 	}
 
 	private void cmdCal(Scanner s, Calendar c) {
