@@ -23,16 +23,43 @@ public class Calendar {
 		}
 	}
 
-	public void printCalendar(int year, int month){
+	public void printCalendar(int year, int month, int weekday){
 		System.out.printf("    <<%4d%3d>>\n",year, month);
 		System.out.println(" SU MO TU WE TH FR SA");
 		System.out.println("--------------------");
 		
+		//print blank sapce 
+		for (int i = 0; i < weekday; i++){
+			System.out.print("   ");
+		}
+		
 		int maxDay = getMaxDaysOfMonth(year, month);
 		
-		for(int i = 1; i <= maxDay; i++){
+		int count = 7 - weekday;
+		int delim = (count > 7) ? count : 0;
+		
+		/*
+		int delim;
+		if (count < 7) {
+			delim = count;
+		} else {
+			delim = 0;
+		}*/
+		
+		//print first line
+		
+		
+		for (int i= 1; i<=count; i++){
+			System.out.printf("%3d",i);
+		}
+		System.out.println();
+		
+		//print from second line to last line
+		
+		count++;
+		for(int i = count; i <= maxDay; i++){
 			System.out.printf("%3d", i);
-			if (i % 7 == 0){
+			if (i % 7 == delim){
 				System.out.println();
 			}
 		}
